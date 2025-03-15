@@ -13,41 +13,41 @@
 
                     @foreach ($parishes as $item)
                     <label class="form-check">
-                        <input type="checkbox" class="form-check-input" name="form-type[]" value="1" checked="">
+                        <input type="checkbox" class="form-check-input" name="form-type[]" value="1">
                         <span class="form-check-label">{{ $item->parish_name }}</span>
                       </label>
                     @endforeach
                  
                   
                 </div>
-                <div class="form-label">Remote</div>
+                {{-- <div class="form-label">Remote</div>
                 <div class="mb-4">
                   <label class="form-check form-switch form-switch-3">
                     <input class="form-check-input" type="checkbox">
                     <span class="form-check-label form-check-label-on">On</span>
                     <span class="form-check-label form-check-label-off">Off</span>
                   </label>
-                </div>
-                <div class="form-label">Salary Range</div>
+                </div> --}}
+                <div class="form-label">Parking Prices</div>
                 <div class="mb-4">
                   <label class="form-check">
                     <input type="radio" class="form-check-input" name="form-salary" value="1" checked="">
-                    <span class="form-check-label">$20K - $50K</span>
+                    <span class="form-check-label">$1000 per hour</span>
                   </label>
                   <label class="form-check">
                     <input type="radio" class="form-check-input" name="form-salary" value="2" checked="">
-                    <span class="form-check-label">$50K - $100K</span>
+                    <span class="form-check-label">$2000 per hour</span>
                   </label>
                   <label class="form-check">
                     <input type="radio" class="form-check-input" name="form-salary" value="3">
-                    <span class="form-check-label">&gt; $100K</span>
+                    <span class="form-check-label">&gt; $2000</span>
                   </label>
-                  <label class="form-check">
+                  {{-- <label class="form-check">
                     <input type="radio" class="form-check-input" name="form-salary" value="4">
                     <span class="form-check-label">Drawing / Painting</span>
-                  </label>
+                  </label> --}}
                 </div>
-                <div class="form-label">Immigration</div>
+                {{-- <div class="form-label">Immigration</div>
                 <div class="mb-4">
                   <label class="form-check form-switch form-switch-3">
                     <input class="form-check-input" type="checkbox">
@@ -55,8 +55,8 @@
                     <span class="form-check-label form-check-label-off">Off</span>
                   </label>
                   <div class="small text-secondary">Only show companies that can sponsor a visa</div>
-                </div>
-                <div class="form-label">Location</div>
+                </div> --}}
+                {{-- <div class="form-label">Location</div>
                 <div class="mb-4">
                   <select class="form-select">
                     <option>Anywhere</option>
@@ -65,7 +65,7 @@
                     <option>New York</option>
                     <option>Berlin</option>
                   </select>
-                </div>
+                </div> --}}
                 <div class="mt-5">
                   <button class="btn btn-primary w-100">Confirm changes</button>
                   <a href="#" class="btn btn-link w-100"> Reset to defaults </a>
