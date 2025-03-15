@@ -5,14 +5,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            <a href=".">
-                <img src="./static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+            <a href="/">
+                <img src="{{ asset('logo.png') }}" width="500" height="500" alt="Tabler" class="navbar-brand-image">
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
             <div class="nav-item d-none d-md-flex me-3">
                 <div class="btn-list">
-                    <a href="https://github.com/tabler/tabler" class="btn btn-primary" target="_blank" rel="noreferrer">
+                    <a href="{{ route('register')}}" class="btn btn-primary">
                         <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -23,7 +23,7 @@
                         </svg> --}}
                        Register
                     </a>
-                    <a href="https://github.com/sponsors/codecalm" class="btn" target="_blank" rel="noreferrer">
+                    <a href="{{ route('login') }}" class="btn">
                         <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink" width="24" height="24"
                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
