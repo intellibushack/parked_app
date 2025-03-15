@@ -11,6 +11,10 @@ Route::get('/login', function () {
 
 Route::resource('/',Dashboard::class);
 
+Route::get('/terms',function(){
+    return view('terms');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
