@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SpotsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
@@ -11,9 +12,7 @@ Route::get('/login', function () {
 
 Route::resource('/',Dashboard::class);
 
-Route::get('/terms',function(){
-    return view('terms');
-});
+Route::resource("/spots", SpotsController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
