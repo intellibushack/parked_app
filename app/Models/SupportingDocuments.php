@@ -8,14 +8,16 @@ class SupportingDocuments extends Model
 {
     protected $table = 'supporting_documents';
 
-    protected $fillable = [
-        'id',
-        'user_id',
-        'link',
-        'created_at',
-        'updated_at',
-        'deleted_at'
-    ];
+    // protected $fillable = [
+    //     'id',
+    //     'user_id',
+    //     'link',
+    //     'created_at',
+    //     'updated_at',
+    //     'deleted_at'
+    // ];
+
+    protected $guarded = [];
 
     public $timestamps = true;
 }

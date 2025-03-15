@@ -8,28 +8,17 @@
         <div class="row g-4">
             <div class="col-md-3">
               <form action="./" method="get" autocomplete="off" novalidate="" class="sticky-top">
-                <div class="form-label">Job Types</div>
+                <div class="form-label">Filter By Parish</div>
                 <div class="mb-4">
-                  <label class="form-check">
-                    <input type="checkbox" class="form-check-input" name="form-type[]" value="1" checked="">
-                    <span class="form-check-label">Programming</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" class="form-check-input" name="form-type[]" value="2" checked="">
-                    <span class="form-check-label">Design</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" class="form-check-input" name="form-type[]" value="3">
-                    <span class="form-check-label">Management / Finance</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" class="form-check-input" name="form-type[]" value="4">
-                    <span class="form-check-label">Customer Support</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" class="form-check-input" name="form-type[]" value="5">
-                    <span class="form-check-label">Sales / Marketing</span>
-                  </label>
+
+                    @foreach ($parishes as $item)
+                    <label class="form-check">
+                        <input type="checkbox" class="form-check-input" name="form-type[]" value="1" checked="">
+                        <span class="form-check-label">{{ $item->parish_name }}</span>
+                      </label>
+                    @endforeach
+                 
+                  
                 </div>
                 <div class="form-label">Remote</div>
                 <div class="mb-4">
