@@ -1,17 +1,15 @@
 <?php
 
+use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::resource('/',Dashboard::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

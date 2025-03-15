@@ -141,7 +141,7 @@
   </header>
   <header class="navbar-expand-md">
     <div class="collapse navbar-collapse" id="navbar-menu">
-      <div class="navbar">
+      {{-- <div class="navbar">
         <div class="container-xl">
           <ul class="navbar-nav">
             <li class="nav-item active">
@@ -580,6 +580,6 @@
             </form>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </header>
