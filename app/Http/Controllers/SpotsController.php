@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookingRequest;
 use App\Models\Spots;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,9 @@ class SpotsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Spots $spots)
+    public function show(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
