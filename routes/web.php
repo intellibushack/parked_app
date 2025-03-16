@@ -9,8 +9,10 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-
-Route::resource('/', Dashboard::class);
+Route::resource('/',Dashboard::class);
+Route::get("/terms", function(){
+    return view('terms');
+})->name('terms');
 
 // Route::resource("/spots", SpotsController::class);
 Route::post('/spots/search', [SpotsController::class, 'search'])->name('spots.search');
