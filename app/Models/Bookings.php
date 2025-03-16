@@ -10,12 +10,14 @@ class Bookings extends Model
 
     protected $fillable = [
         'id',
-        'date',
+        'start_date',
+        'end_date',
         'start_time',
         'end_time',
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
+        'spots_availability_id'
 
     ];
 
