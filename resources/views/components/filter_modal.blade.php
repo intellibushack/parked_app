@@ -1,4 +1,4 @@
-<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal @if($errors->any()) modal-blur fade  show d-block @endif" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <form action="{{ route('spots.search') }}" method="POST" id="search_form">
@@ -12,9 +12,14 @@
                     <div class="mb-3">
                         <label class="form-label">Where</label>
                         <div class="row">
-                            <div class="col"><input type="text" class="form-control" name="street_number"
+                            <div class="col"><input type="text" class="form-control @error('street_number')
+                                is-invalid
+                            @enderror" name="street_number"
                                     placeholder="Street Number Eg.29"></div>
                             <div class="col">
+                                @error('street_number')
+                                    <div class="is-invalid">{{ $message }}</div>
+                                @enderror
                                 <input type="text" class="form-control" placeholder="Street Name" name="street_name">
                             </div>
                             <div class="col">
@@ -119,4 +124,13 @@
     function submitSearch() {
         document.getElementById('search_form').submit();
     }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        @if($errors->any())
+            const modal = new bootstrap.Modal(document.getElementById('modal-report'));
+            modal.show();
+        @endif
+    });
 </script>

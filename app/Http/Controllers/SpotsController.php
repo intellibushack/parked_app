@@ -101,9 +101,12 @@ class SpotsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function search(Request $request)
+    public function search(BookingRequest $request)
     {
         // dd($request);
+
+        $request->validate();
+        
         $street_name = $request->street_name;
         $parish_id = $request->parish_id;
         $start_date = $request->start_date;

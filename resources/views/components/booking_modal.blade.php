@@ -1,4 +1,4 @@
-<div class="modal modal-blur fade" id="modal-booking" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal modal-blur fade @if($errors->any()) show d-block @endif" id="modal-booking" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <form action="{{ route('bookings.store') }}" method="POST" id="booking_form">
