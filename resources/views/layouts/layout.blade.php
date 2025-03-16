@@ -55,7 +55,9 @@
     <!-- Tabler Core -->
     <script src="{{ asset('dist/js/tabler.min.js') }}" defer></script>
     <script src="{{ asset('dist/js/tabler.min.js') }}" defer></script>
-    <script>
+
+    {{-- Other JS --}}
+    {{-- <script>
         // @formatter:off
         document.addEventListener("DOMContentLoaded", function() {
             window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg'), {
@@ -870,7 +872,9 @@
             })).render();
         });
         // @formatter:on
-    </script>
+    </script> --}}
+
+    {{-- End JS --}}
     @include('components.filter_modal')
 </body>
 
