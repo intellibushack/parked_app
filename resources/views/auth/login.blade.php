@@ -19,7 +19,13 @@
                             @method('POST')
                             <div class="mb-3">
                                 <label class="form-label">Email address</label>
-                                <input type="email" class="form-control" placeholder="your@email.com" autocomplete="off" name="email">
+                                <input type="email" class="form-control @error('email')
+                                    is-invalid
+                                @enderror" placeholder="your@email.com" autocomplete="off" name="email">
+                                @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">
@@ -29,8 +35,10 @@
                                     </span>
                                 </label>
                                 <div class="input-group input-group-flat">
-                                    <input type="password" class="form-control" placeholder="Your password"
-                                        autocomplete="off" name="password">
+                                    <input type="password" class="form-control @error('password')
+                                        is-invalid
+                                    @enderror" placeholder="Your password"
+                                        autocomplete="off" name="password" >
                                     <span class="input-group-text">
                                         <a href="#" class="link-secondary" title="Show password"
                                             data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
@@ -44,6 +52,9 @@
                                             </svg>
                                         </a>
                                     </span>
+                                    @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                                 </div>
                             </div>
                             <div class="mb-2">

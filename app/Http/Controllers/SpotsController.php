@@ -104,6 +104,9 @@ class SpotsController extends Controller
     public function search(Request $request)
     {
         // dd($request);
+
+        // $request->validate();
+
         $street_name = $request->street_name;
         $parish_id = $request->parish_id;
         $start_date = $request->start_date;

@@ -1,27 +1,27 @@
 @extends('layouts.layout')
 
-@section('title','Dashboard')
+@section('title', 'Dashboard')
 @section('content')
 
 
-<div class="page-body">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-3">
-              <form action="./" method="get" autocomplete="off" novalidate="" class="sticky-top">
-                <div class="form-label">Filter By Parish</div>
-                <div class="mb-4">
+    <div class="page-body">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <form action="./" method="get" autocomplete="off" novalidate="" class="sticky-top">
+                        <div class="form-label">Filter By Parish</div>
+                        <div class="mb-4">
 
-                    @foreach ($parishes as $item)
-                    <label class="form-check">
-                        <input type="checkbox" class="form-check-input" name="form-type[]" value="1">
-                        <span class="form-check-label">{{ $item->parish_name }}</span>
-                      </label>
-                    @endforeach
-                 
-                  
-                </div>
-                {{-- <div class="form-label">Remote</div>
+                            @foreach ($parishes as $item)
+                                <label class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="form-type[]" value="1">
+                                    <span class="form-check-label">{{ $item->parish_name }}</span>
+                                </label>
+                            @endforeach
+
+
+                        </div>
+                        {{-- <div class="form-label">Remote</div>
                 <div class="mb-4">
                   <label class="form-check form-switch form-switch-3">
                     <input class="form-check-input" type="checkbox">
@@ -29,26 +29,28 @@
                     <span class="form-check-label form-check-label-off">Off</span>
                   </label>
                 </div> --}}
-                <div class="form-label">Parking Prices</div>
-                <div class="mb-4">
-                  <label class="form-check">
-                    <input type="radio" class="form-check-input" name="form-salary" value="1" checked="">
-                    <span class="form-check-label">$1000 per hour</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="radio" class="form-check-input" name="form-salary" value="2" checked="">
-                    <span class="form-check-label">$2000 per hour</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="radio" class="form-check-input" name="form-salary" value="3">
-                    <span class="form-check-label">&gt; $2000</span>
-                  </label>
-                  {{-- <label class="form-check">
+                        <div class="form-label">Parking Prices</div>
+                        <div class="mb-4">
+                            <label class="form-check">
+                                <input type="radio" class="form-check-input" name="form-salary" value="1"
+                                    checked="">
+                                <span class="form-check-label">$1000 per hour</span>
+                            </label>
+                            <label class="form-check">
+                                <input type="radio" class="form-check-input" name="form-salary" value="2"
+                                    checked="">
+                                <span class="form-check-label">$2000 per hour</span>
+                            </label>
+                            <label class="form-check">
+                                <input type="radio" class="form-check-input" name="form-salary" value="3">
+                                <span class="form-check-label">&gt; $2000</span>
+                            </label>
+                            {{-- <label class="form-check">
                     <input type="radio" class="form-check-input" name="form-salary" value="4">
                     <span class="form-check-label">Drawing / Painting</span>
                   </label> --}}
-                </div>
-                {{-- <div class="form-label">Immigration</div>
+                        </div>
+                        {{-- <div class="form-label">Immigration</div>
                 <div class="mb-4">
                   <label class="form-check form-switch form-switch-3">
                     <input class="form-check-input" type="checkbox">
@@ -57,7 +59,7 @@
                   </label>
                   <div class="small text-secondary">Only show companies that can sponsor a visa</div>
                 </div> --}}
-                {{-- <div class="form-label">Location</div>
+                        {{-- <div class="form-label">Location</div>
                 <div class="mb-4">
                   <select class="form-select">
                     <option>Anywhere</option>
@@ -67,17 +69,17 @@
                     <option>Berlin</option>
                   </select>
                 </div> --}}
-                <div class="mt-5">
-                  <button class="btn btn-primary w-100">Confirm changes</button>
-                  <a href="#" class="btn btn-link w-100"> Reset to defaults </a>
+                        <div class="mt-5">
+                            <button class="btn btn-primary w-100">Confirm changes</button>
+                            <a href="#" class="btn btn-link w-100"> Reset to defaults </a>
+                        </div>
+                    </form>
                 </div>
-              </form>
-            </div>
-            <div class="col-md-9">
+                <div class="col-md-9">
 
-              @include('partials.listing')
-              {{-- <div class="row row-cards"> --}}
-                {{-- <div class="space-y">
+                    @include('partials.listing')
+                    {{-- <div class="row row-cards"> --}}
+                    {{-- <div class="space-y">
                   <div class="card">
                     <div class="row g-0">
                       <div class="col-auto">
@@ -888,11 +890,51 @@
                     </div>
                   </div>
                 </div> --}}
-               
-              {{-- </div> --}}
+
+                    {{-- </div> --}}
+                </div>
             </div>
-          </div>
+        </div>
     </div>
-</div>
+    <div id="x"></div>
 
 @endsection
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const x = document.getElementById('x'); 
+
+      function getLocation() {
+          if (navigator.geolocation) {
+              // Add error handling for getCurrentPosition
+              navigator.geolocation.getCurrentPosition(showPosition, handleError);
+          } else {
+              x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+      }
+
+      function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude +
+              "<br>Longitude: " + position.coords.longitude;
+      }
+
+      function handleError(error) {
+          switch (error.code) {
+              case error.PERMISSION_DENIED:
+                  x.innerHTML = "User denied the request for Geolocation.";
+                  break;
+              case error.POSITION_UNAVAILABLE:
+                  x.innerHTML = "Location information is unavailable.";
+                  break;
+              case error.TIMEOUT:
+                  x.innerHTML = "The request to get user location timed out.";
+                  break;
+              case error.UNKNOWN_ERROR:
+                  x.innerHTML = "An unknown error occurred.";
+                  break;
+          }
+      }
+
+      
+      getLocation();
+  });
+</script>
