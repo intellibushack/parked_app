@@ -6,16 +6,10 @@
     <div class="page-header d-print-none">
     <div class="container-xl">
         <div class="row g-2 align-items-center">
-        <div class="col">
-            <h2 class="page-title">Frequently Asked Questions</h2>
-        </div>
         <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
             <div class="d-flex">
-            <ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs">
-                <li class="breadcrumb-item"><a href="#">Tabler</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="#">Pages</a></li>
-            </ol>
+
             </div>
         </div>
         </div>
@@ -32,13 +26,12 @@
                 <h2 class="mb-3">Terms of Service</h2>
                 <div id="faq-1" class="accordion" role="tablist" aria-multiselectable="true">
                 <div class="accordion-item ">
-                    <button class="accordion-header" data-bs-toggle="collapse" data-bs-target="#faq-1-1" role="tab">
-                    <h4 class="accordion-header-text m-0">Welcome to our service! </h4>
-                    <h4 class="accordion-header-text">Thank you for choosing Parking JA!</h4>
-                    </button>
+                    <h2 class="accordion-header-text m-0 d-flex justify-content-center"><strong>Welcome to our service!</strong> </h2>
+                    <h4 class="accordion-header-text m-0 d-flex justify-content-center"><strong>Thank you for choosing Parking JA!</strong></h4>
                     <div id="faq-1-1" class="accordion-collapse collapse show" role="tabpanel" data-bs-parent="#faq-1">
                     <div class="accordion-body pt-0">
                         <div>
+                            <P></p>
                         <p>
                         The documents referred to within these Terms include but are not limited to our: &nbsp<br>
                         <p></p>
