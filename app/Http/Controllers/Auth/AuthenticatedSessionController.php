@@ -29,12 +29,13 @@ class AuthenticatedSessionController extends Controller
     // Regenerate session first for security
     $request->session()->regenerate();
     
-    $user = Auth::user();
-    if ($user->user_type_id == 1) {
-        return redirect()->route('login')->with('success', 'You have been logged in');
-    } elseif ($user->user_type_id == 2) {
-        return redirect()->route('register')->with('success', 'You have been logged in');
-    }
+    // $user = Auth::user();
+    // dd($user);
+    // if ($user->user_type_id == 1) {
+    //     return redirect()->route('login')->with('success', 'You have been logged in');
+    // } elseif ($user->user_type_id == 2) {
+    //     return redirect()->route('register')->with('success', 'You have been logged in');
+    // }
     
     // This is a fallback in case user_type_id is neither 1 nor 2
     return redirect()->intended(route('dashboard', absolute: false))->with('success', 'You have been successfully logged in!');
