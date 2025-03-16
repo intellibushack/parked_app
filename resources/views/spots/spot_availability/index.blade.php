@@ -92,7 +92,7 @@
                                                                 Add Availability
                                                             </button>
                                                             <button class="btn btn-info btn-sm">
-                                                                View Availabilities
+                                                                View Bookings
                                                             </button>
                                                         </div>
                                                     </div>
