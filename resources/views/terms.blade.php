@@ -68,7 +68,7 @@
                     <div id="faq-2-1" class="accordion-collapse collapse show" role="tabpanel" data-bs-parent="#faq-2">
                     <div class="accordion-body pt-0">
                         <div>
-                        Parking JA facilitates payments securely between Guests and Hosts. The key points include:<br>
+                        Parkin JA facilitates payments securely between Guests and Hosts. The key points include:<br>
                         <ul>
                             <li><strong>Payment Collection:</strong> Guests must provide valid payment information at the time of booking. Payments are held securely until the booking is complete.</li>
                             <li><strong>Host Payouts:</strong> Hosts will receive payouts within [7 business days] after the reservation ends, minus applicable fees.</li>
