@@ -57,12 +57,52 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-body">
+                    <h3 class="card-title mb-3">Payment Information</h3>
+
+                    <div class="row row-cards">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstname" name="firstname">
+                                {{-- <span class="d-block text-secondary">
+                                    <span id="firstname"></span>
+                                </span> --}}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email">
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Card Information</label>
+                        <div id="card-element" class="form-control" style="height: 40px; padding-top: 10px;">
+                            <!-- Stripe Elements will be inserted here -->
+                        </div>
+                        <div id="card-errors" class="text-danger mt-2" role="alert"></div>
+                        <!-- Include a hidden input for the Stripe token -->
+                        <input type="hidden" name="stripeToken" id="stripe_token">
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                         Cancel
                     </a>
-                    <button class="btn btn-primary ms-auto" onclick="submitBooking()" type="button">
-                        Confirm Booking
+                    <button class="btn btn-primary ms-auto" id="submit-button" type="button">
+                        Confirm Booking and Pay
                     </button>
                 </div>
             </form>
@@ -70,8 +110,76 @@
     </div>
 </div>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-    function submitBooking() {
-        document.getElementById('booking_form').submit();
+    // Create a Stripe client
+    // var stripe = Stripe('{{ config('services.stripe.key') }}');
+    var stripe = Stripe('pk_test_51N5YKhIQ1tJbCHVBuTO2SIoKy8smwbSOEUT4WjgVdFFz2yp2eNKX52xRjqMa0Q7DKw5q5R72zIrUpN0LTcONTpSg00cQFIIXE9')
+    var elements = stripe.elements();
+
+    // Create an instance of the card Element
+    var style = {
+        base: {
+            color: '#32325d',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+        }
+    };
+
+    var card = elements.create('card', {
+        style: style
+    });
+
+    // Add an instance of the card Element into the `card-element` div
+    card.mount('#card-element');
+
+    // Handle real-time validation errors from the card Element
+    card.addEventListener('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+    // Handle form submission
+    var form = document.getElementById('booking_form');
+    var submitButton = document.getElementById('submit-button');
+
+    submitButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        submitButton.disabled = true;
+
+        stripe.createToken(card).then(function(result) {
+            if (result.error) {
+                // Inform the user if there was an error
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+                submitButton.disabled = false;
+            } else {
+                // Send the token to your server
+                stripeTokenHandler(result.token);
+            }
+        });
+    });
+
+    // Submit the form with the token ID
+    function stripeTokenHandler(token) {
+        // Insert the token ID into the form so it gets submitted to the server
+        var hiddenInput = document.getElementById('stripe_token');
+        hiddenInput.value = token.id;
+
+        // Submit the form
+        form.submit();
     }
 </script>

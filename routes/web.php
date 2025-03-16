@@ -11,8 +11,13 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+<<<<<<< HEAD
 Route::resource('/', Dashboard::class);
 Route::get("/terms", function () {
+=======
+Route::get('/',[Dashboard::class,'index'])->name('dashboard');
+Route::get("/terms", function(){
+>>>>>>> e75d5d4a7b097c5552c7f210839915c284c716b1
     return view('terms');
 })->name('terms');
 

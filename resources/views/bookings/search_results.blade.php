@@ -3,6 +3,7 @@
 @section('title', 'Search Results')
 @section('content')
 
+@include('partials.messages')
     <div class="page-body">
         <div class="container">
             <div class="row g-4">
@@ -11,12 +12,12 @@
                         <div class="form-label">Filter By Parish</div>
                         <div class="mb-4">
 
-                            @foreach ($parishes as $item)
+                            {{-- @foreach ($parishes as $item)
                                 <label class="form-check">
                                     <input type="checkbox" class="form-check-input" name="form-type[]" value="1">
                                     <span class="form-check-label">{{ $item->parish_name }}</span>
                                 </label>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                         <div class="form-label">Parking Prices</div>
                         <div class="mb-4">
@@ -120,14 +121,25 @@
                                                         </div>
                                                         <div class="col-md-auto">
                                                             <div class="mt-3 badges">
-                                                                <button href="#" class="btn btn-success"
-                                                                    data-bs-toggle="modal" data-bs-target="#modal-booking"
-                                                                    type="button"
-                                                                    onclick="populateModal({{ json_encode($spot) }})">
-                                                                    Book Spot
-                                                                </button>
+                                                                @if(Auth::check())
+                                                                    <button class="btn btn-success"
+                                                                        data-bs-toggle="modal" 
+                                                                        data-bs-target="#modal-booking"
+                                                                        type="button"
+                                                                        onclick="populateModal({{ json_encode($spot, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) }}, {{ json_encode(Auth::user(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) }})">
+                                                                        Book Spot
+                                                                    </button>
+                                                                @else
+                                                                    <button class="btn btn-success"
+                                                                        data-bs-toggle="modal" 
+                                                                        data-bs-target="#modal-login-required"
+                                                                        type="button">
+                                                                        Book Spot
+                                                                    </button>
+                                                                @endif
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -144,13 +156,19 @@
 
 @endsection
 @include('components.booking_modal')
+@include('components.loginModal')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function populateModal(spot) {
+    function populateModal(spot,user) {
+        console.log(user.firstname);
         document.getElementById('street_number').innerHTML = spot.street_number;
         document.getElementById('street_name').innerHTML = spot.street_name;
         document.getElementById('parish').innerHTML = spot.parish.parish_name;
         document.getElementById('booking_spot_id').value = spot.spot_availability.id;
         document.getElementById('booking_class_id').innerHTML = spot.class.id;
+        document.getElementById('firstname').value = user.firstname
+        document.getElementById('lastname').value = user.lastname
+        document.getElementById('email').value = user.email
         min_height_text = spot.class.min_height != null ? ("Height: over " + spot.class.min_height + "m <br/>") : "";
         max_height_text = spot.class.max_height != null ? ("Height: under " + spot.class
             .max_height + "m <br/>") : "";
