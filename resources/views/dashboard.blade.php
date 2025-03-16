@@ -74,8 +74,10 @@
               </form>
             </div>
             <div class="col-md-9">
-              <div class="row row-cards">
-                <div class="space-y">
+
+              @include('partials.listing')
+              {{-- <div class="row row-cards"> --}}
+                {{-- <div class="space-y">
                   <div class="card">
                     <div class="row g-0">
                       <div class="col-auto">
@@ -885,8 +887,9 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </div> --}}
+               
+              {{-- </div> --}}
             </div>
           </div>
     </div>
