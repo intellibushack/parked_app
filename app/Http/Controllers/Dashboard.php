@@ -15,3 +15,4 @@ class Dashboard extends Controller
         return view('dashboard',compact('parishes'));
     }
 }
+
