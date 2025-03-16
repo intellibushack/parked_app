@@ -73,7 +73,7 @@ class SpotsController extends Controller
         $spots = Spots::with(['spotAvailability' => function ($query) use ($start_date, $end_date, $start_time, $end_time) {
             $query->whereRaw("occurrence = 'weekly' and WEEKDAY(start_date) <= WEEKDAY(?) and WEEKDAY(end_date) >= WEEKDAY(?) and start_time<=? and end_time>=? and start_date <= ? ", [$start_date, $end_date, $start_time, $end_time, $start_date])
                 ->orWhereRaw("occurrence = 'once' and start_date <= ? and end_date>=? and start_time <= ? and end_time >=?", [$start_date, $end_date, $start_time, $end_time]);
-        }])->with('parish')
+        }])->with('parish', 'class')
             ->has('spotAvailability')
             ->where(function ($query) use ($street_name, $parish_id) {
                 $query->where('street_name', $street_name)

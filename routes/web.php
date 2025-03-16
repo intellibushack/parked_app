@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpotsController;
+use App\Models\Bookings;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
@@ -17,6 +19,7 @@ Route::get("/terms", function(){
 // Route::resource("/spots", SpotsController::class);
 Route::post('/spots/search', [SpotsController::class, 'search'])->name('spots.search');
 Route::get('/spots/results', [SpotsController::class, 'show_search'])->name('spots.show.search');
+Route::resource('bookings', BookingsController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

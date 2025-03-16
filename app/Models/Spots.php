@@ -34,4 +34,9 @@ class Spots extends Model
     {
         return $this->hasOne(Parishes::class, 'id', 'parish_id');
     }
+
+    public function class(): HasOne
+    {
+        return $this->hasOne(Classes::class, 'id', 'class_id');
+    }
 }

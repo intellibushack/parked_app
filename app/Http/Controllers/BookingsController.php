@@ -28,7 +28,16 @@ class BookingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        Bookings::create([
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'spots_availability_id' => $request->spots_availability_id
+        ]);
+
+        // Check availability
     }
 
     /**

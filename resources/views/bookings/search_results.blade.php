@@ -70,20 +70,6 @@
                                                             <div
                                                                 class="mt-3 list-inline list-inline-dots mb-0 text-secondary d-sm-block d-none">
                                                                 <div class="list-inline-item">
-                                                                    <!-- Download SVG icon from http://tabler.io/icons/icon/building-community -->
-                                                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                                        stroke="currentColor" stroke-width="2"
-                                                                        stroke-linecap="round" stroke-linejoin="round"
-                                                                        class="icon icon-inline icon-2">
-                                                                        <path
-                                                                            d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8">
-                                                                        </path>
-                                                                        <path d="M13 7l0 .01"></path>
-                                                                        <path d="M17 7l0 .01"></path>
-                                                                        <path d="M17 11l0 .01"></path>
-                                                                        <path d="M17 15l0 .01"></path>
-                                                                    </svg> --}}
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="currentColor"
                                                                         class="bi bi-door-open" viewBox="0 0 16 16">
@@ -110,17 +96,6 @@
                                                                             d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z" />
                                                                         <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0" />
                                                                     </svg>
-                                                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                                        stroke="currentColor" stroke-width="2"
-                                                                        stroke-linecap="round" stroke-linejoin="round"
-                                                                        class="icon icon-inline icon-2">
-                                                                        <path
-                                                                            d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11">
-                                                                        </path>
-                                                                        <path d="M9 7l4 0"></path>
-                                                                        <path d="M9 11l4 0"></path>
-                                                                    </svg> --}}
                                                                     @if ($spot->spotAvailability?->occurrence == 'weekly')
                                                                         {{ date('l', strtotime($spot->spotAvailability?->end_date)) }}
                                                                         -
@@ -132,41 +107,25 @@
                                                                     @endif
                                                                 </div>
                                                                 <div class="list-inline-item">
-                                                                    <!-- Download SVG icon from http://tabler.io/icons/icon/map-pin -->
-                                                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                                        stroke="currentColor" stroke-width="2"
-                                                                        stroke-linecap="round" stroke-linejoin="round"
-                                                                        class="icon icon-inline icon-2">
-                                                                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
-                                                                        <path
-                                                                            d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z">
-                                                                        </path>
-                                                                    </svg> --}}
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                         height="16" fill="currentColor"
                                                                         class="bi bi-car-front-fill" viewBox="0 0 16 16">
                                                                         <path
                                                                             d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17s3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z" />
                                                                     </svg>
-                                                                    Class 
+                                                                    Class
                                                                     {{ $spot->class_id }}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-auto">
                                                             <div class="mt-3 badges">
-                                                                <button class="btn btn-success">
+                                                                <button href="#" class="btn btn-success"
+                                                                    data-bs-toggle="modal" data-bs-target="#modal-booking"
+                                                                    type="button"
+                                                                    onclick="populateModal({{ json_encode($spot) }})">
                                                                     Book Spot
                                                                 </button>
-                                                                {{-- <a href="#"
-                                                                    class="badge badge-outline text-secondary fw-normal badge-pill">HTML</a> --}}
-                                                                {{-- <a href="#"
-                                                                    class="badge badge-outline text-secondary fw-normal badge-pill">CSS</a>
-                                                                <a href="#"
-                                                                    class="badge badge-outline text-secondary fw-normal badge-pill">React</a>
-                                                                <a href="#"
-                                                                    class="badge badge-outline text-secondary fw-normal badge-pill">+3</a> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -184,3 +143,25 @@
     </div>
 
 @endsection
+@include('components.booking_modal')
+<script>
+    function populateModal(spot) {
+        document.getElementById('street_number').innerHTML = spot.street_number;
+        document.getElementById('street_name').innerHTML = spot.street_name;
+        document.getElementById('parish').innerHTML = spot.parish.parish_name;
+        document.getElementById('booking_spot_id').value = spot.spot_availability.id;
+        document.getElementById('booking_class_id').innerHTML = spot.class.id;
+        min_height_text = spot.class.min_height != null ? ("Height: over " + spot.class.min_height + "m <br/>") : "";
+        max_height_text = spot.class.max_height != null ? ("Height: under " + spot.class
+            .max_height + "m <br/>") : "";
+
+        min_length_text = spot.class.min_length != null ? ("Length: over " + spot.class
+                .min_length + "m <br/>") :
+            "";
+        max_length_text = spot.class.max_length != null ? ("Length: under " + spot.class
+            .max_length + "m <br/>") : "";
+        document.getElementById('booking_class_description').innerHTML = min_height_text + max_height_text +
+            min_length_text +
+            max_length_text;
+    }
+</script>
