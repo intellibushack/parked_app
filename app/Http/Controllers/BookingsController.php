@@ -44,7 +44,7 @@ class BookingsController extends Controller
             'end_time' => $request->end_time,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'spots_availability_id' => $request->spots_availability_id,
+            'spots_availability_id' => 1,
             'customer_id' => 1,
             'payment_id' => 1
         ]);
