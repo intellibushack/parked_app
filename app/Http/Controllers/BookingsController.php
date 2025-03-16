@@ -21,8 +21,17 @@ class BookingsController extends Controller
         $bookings =  Bookings::with('customer', 'spotAvailability.spot', 'payment')
             ->whereRelation('spotAvailability.spot', 'user_id', "=", 1)
             ->get();
-        // dd($bookings);
 
+        return view('bookings.index', compact('bookings', 'parishes'));
+    }
+
+    public function indexCustom($spot_a_id)
+    {
+        $parishes = Parishes::all();
+        $bookings =  Bookings::with('customer', 'spotAvailability.spot', 'payment')
+            ->where('spots_availability_id', $spot_a_id)
+            ->whereRelation('spotAvailability.spot', 'user_id', "=", 1)
+            ->get();
         return view('bookings.index', compact('bookings', 'parishes'));
     }
 
@@ -75,7 +84,6 @@ class BookingsController extends Controller
             'payment_type' => 'Stripe',
             'invoice_no' => 'PAR' . mt_rand(10000000, 90000000),
             'booking_date' => Carbon::now(),
-
         ]);
 
         //Redirect to success 

@@ -84,18 +84,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-auto">
-                                                        <div class="mt-3 badges">
-                                                            <button href="#" class="btn btn-primary btn-sm"
-                                                                type="button"
-                                                                onclick="">
-                                                                Add Availability
-                                                            </button>
-                                                            <button class="btn btn-info btn-sm">
-                                                                View Bookings
-                                                            </button>
+                                                    @if ($spot_availability->bookings_count != 0)
+                                                        <div class="col-md-auto">
+                                                            <div class="mt-3 badges">
+                                                                <a class="btn btn-info"
+                                                                    href="/bookings/spot-availability/{{ $spot_availability->id }}">
+                                                                    View Bookings
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

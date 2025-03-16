@@ -19,6 +19,8 @@ Route::get("/terms", function(){
 // Route::resource("/spots", SpotsController::class);
 Route::post('/spots/search', [SpotsController::class, 'search'])->name('spots.search');
 Route::get('/spots/results', [SpotsController::class, 'show_search'])->name('spots.show.search');
+
+Route::get('/bookings/spot-availability/{spot_a_id}', [BookingsController::class, 'indexCustom']);
 Route::resource('bookings', BookingsController::class);
 
 Route::get('/spots/renter', [SpotsController::class, 'renterIndex'])->name('spots.renter.index');

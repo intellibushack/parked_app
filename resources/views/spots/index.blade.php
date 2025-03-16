@@ -78,7 +78,7 @@
                                                         <div class="mt-3 badges">
                                                             <button href="#" class="btn btn-primary btn-sm"
                                                                 type="button"
-                                                                onclick="populateModal({{ json_encode($spot) }})">
+                                                                onclick="">
                                                                 Add Availability
                                                             </button>
                                                             <button class="btn btn-info btn-sm">
