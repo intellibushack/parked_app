@@ -28,6 +28,7 @@
       	font-feature-settings: "cv03", "cv04", "cv11";
       }
     </style>
+	<script src="https://js.stripe.com/v3/"></script>
   </head>
   <body >
     <script src="{{ asset('dist/js/demo-theme.js') }}"></script>

@@ -11,7 +11,7 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::resource('/',Dashboard::class);
+Route::get('/',[Dashboard::class,'index'])->name('dashboard');
 Route::get("/terms", function(){
     return view('terms');
 })->name('terms');

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bookings;
+use App\Models\Payments;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class BookingsController extends Controller
 {
@@ -38,6 +42,39 @@ class BookingsController extends Controller
         ]);
 
         // Check availability
+
+        //Make payment 
+
+       Stripe::setApiKey('sk_test_51N5YKhIQ1tJbCHVBNqTebnS1k44zZX6ej6KTHj59KOWRBoJmhut1CMI1CktovetW0wiWNGHOrSvfWfFrWgXWvav600ZdoHjOdv');
+
+       $token = $_POST['stripeToken'];
+
+       $charge = Charge::create([
+            'amount' => 10 * 100,
+            'currency' => 'usd',
+            'description' => 'parked',
+            'source' => $token,
+            'metadata' => ['order_id',3434],
+            //'customer' => $request->firstname
+
+       ]);
+
+       $booking_id = Payments::insertGetId([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'total_amount' => 10,
+            'payment_type' => 'Stripe',
+            'invoice_no' => 'PAR' . mt_rand(10000000,90000000),
+            'booking_date' => Carbon::now(),
+    
+       ]);
+
+       //Redirect to success 
+
+       return redirect()
+                ->route('dashboard')
+                ->with('success', 'You have been booked for the spot');
     }
 
     /**
