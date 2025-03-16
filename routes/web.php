@@ -13,7 +13,7 @@ Route::get('/login', function () {
 Route::resource('/',Dashboard::class);
 Route::get("/terms", function(){
     return view('terms');
-})->name("terms");
+})->name('terms');
 
 Route::resource("/spots", SpotsController::class);
 
