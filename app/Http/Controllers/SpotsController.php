@@ -105,8 +105,8 @@ class SpotsController extends Controller
     {
         // dd($request);
 
-        $request->validate();
-        
+        // $request->validate();
+
         $street_name = $request->street_name;
         $parish_id = $request->parish_id;
         $start_date = $request->start_date;
