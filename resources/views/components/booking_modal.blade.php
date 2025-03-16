@@ -15,7 +15,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <input type="text" name="spot_availability_id" id="booking_spot_id" hidden>
+                        <input type="text" name="spots_availability_id" id="booking_spot_id" hidden>
                         <label for="" class="form-label">When</label>
                         <div class="row mb-3">
                             <div class="col-md-5"><input type="date" class="form-control" placeholder="From Date"
