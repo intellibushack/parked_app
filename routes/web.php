@@ -11,8 +11,8 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::resource('/',Dashboard::class);
-Route::get("/terms", function(){
+Route::resource('/', Dashboard::class);
+Route::get("/terms", function () {
     return view('terms');
 })->name('terms');
 
@@ -20,6 +20,14 @@ Route::get("/terms", function(){
 Route::post('/spots/search', [SpotsController::class, 'search'])->name('spots.search');
 Route::get('/spots/results', [SpotsController::class, 'show_search'])->name('spots.show.search');
 Route::resource('bookings', BookingsController::class);
+
+Route::get('/spots/renter', [SpotsController::class, 'renterIndex'])->name('spots.renter.index');
+Route::get('/spot/availability', [SpotsController::class, 'showAvailability'])->name('spots.availability.show');
+Route::resource('spots', SpotsController::class);
+Route::get('/spots/availability/create', [SpotsController::class, 'createAvailability'])->name('spots.availability.create');
+Route::post('/spots/availability/store', [SpotsController::class, 'storeAvailability'])->name('spots.availability.store');
+Route::get('/spot/availability/{spot_id}', [SpotsController::class, 'showAvailabilityBySpot'])->name('spots.availability.show.by.spot');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

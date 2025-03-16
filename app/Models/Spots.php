@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Spots extends Model
@@ -38,5 +39,10 @@ class Spots extends Model
     public function class(): HasOne
     {
         return $this->hasOne(Classes::class, 'id', 'class_id');
+    }
+
+    public function spotAvailabilities(): HasMany
+    {
+        return $this->hasMany(SpotAvailability::class, 'spot_id', 'id');
     }
 }
