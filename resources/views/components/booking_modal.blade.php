@@ -113,7 +113,8 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     // Create a Stripe client
-    var stripe = Stripe('{{ config('services.stripe.key') }}');
+    // var stripe = Stripe('{{ config('services.stripe.key') }}');
+    var stripe = Stripe('pk_test_51N5YKhIQ1tJbCHVBuTO2SIoKy8smwbSOEUT4WjgVdFFz2yp2eNKX52xRjqMa0Q7DKw5q5R72zIrUpN0LTcONTpSg00cQFIIXE9')
     var elements = stripe.elements();
 
     // Create an instance of the card Element
