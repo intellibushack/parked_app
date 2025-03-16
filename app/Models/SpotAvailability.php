@@ -10,14 +10,15 @@ class SpotAvailability extends Model
 
     protected $fillable = [
         'id',
-        'day',
         'start_time',
         'end_time',
-        'date',
         'occurrence',
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
+        'spot_id',
+        'start_date',
+        'end_date'
     ];
 
     public $timestamps = true;

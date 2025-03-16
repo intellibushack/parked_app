@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookingRequest;
+use App\Models\Parishes;
 use App\Models\Spots;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,52 @@ class SpotsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function search(Request $request)
     {
-        dd($request);
+        // dd($request);
+        $street_name = $request->street_name;
+        $parish_id = $request->parish_id;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $start_time = $request->start_time;
+        $end_time = $request->end_time;
+
+        // $spots = Spots::with(['spotAvailability' => function ($query) use ($start_date, $end_date, $start_time, $end_time) {
+        //     $query->whereRaw("occurrence = 'weekly' and WEEKDAY(start_date) <= WEEKDAY(?) and WEEKDAY(end_date) >= WEEKDAY(?) and start_time<=? and end_time>=? and start_date <= ? ", [$start_date, $end_date, $start_time, $end_time, $start_date])
+        //         ->orWhereRaw("occurrence = 'once' and start_date <= ? and end_date>=? and start_time <= ? and end_time >=?", [$start_date, $end_date, $start_time, $end_time]);
+        // }])
+        //     ->has('spotAvailability')
+        //     ->where(function ($query) use ($street_name, $parish_id) {
+        //         $query->where('street_name', $street_name)
+        //             ->orWhere('parish_id', $parish_id);
+        //     })
+        //     ->get();
+
+        return redirect('/spots/results?street_name=' . $street_name . '&parish_id=' . $parish_id . '&start_date=' . $start_date . '&end_date=' . $end_date . '&start_time=' . $start_time . '&end_time=' . $end_time);
+    }
+
+    public function show_search(Request $request)
+    {
+        $parishes = Parishes::all();
+        $street_name = $request->query('street_name');
+        $parish_id = $request->query('parish_id');
+        $start_date = $request->query('start_date');
+        $end_date = $request->query('end_date');
+        $start_time = $request->query('start_time');
+        $end_time = $request->query('end_time');
+
+        $spots = Spots::with(['spotAvailability' => function ($query) use ($start_date, $end_date, $start_time, $end_time) {
+            $query->whereRaw("occurrence = 'weekly' and WEEKDAY(start_date) <= WEEKDAY(?) and WEEKDAY(end_date) >= WEEKDAY(?) and start_time<=? and end_time>=? and start_date <= ? ", [$start_date, $end_date, $start_time, $end_time, $start_date])
+                ->orWhereRaw("occurrence = 'once' and start_date <= ? and end_date>=? and start_time <= ? and end_time >=?", [$start_date, $end_date, $start_time, $end_time]);
+        }])->with('parish')
+            ->has('spotAvailability')
+            ->where(function ($query) use ($street_name, $parish_id) {
+                $query->where('street_name', $street_name)
+                    ->orWhere('parish_id', $parish_id);
+            })
+            ->get();
+
+        return view('bookings.search_results', compact('spots', 'parishes'));
     }
 
     /**

@@ -10,9 +10,11 @@ Route::get('/login', function () {
 });
 
 
-Route::resource('/',Dashboard::class);
+Route::resource('/', Dashboard::class);
 
-Route::resource("/spots", SpotsController::class);
+// Route::resource("/spots", SpotsController::class);
+Route::post('/spots/search', [SpotsController::class, 'search'])->name('spots.search');
+Route::get('/spots/results', [SpotsController::class, 'show_search'])->name('spots.show.search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,4 +22,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
